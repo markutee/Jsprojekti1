@@ -1,25 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const taskInput = document.querySelector('#taskInput');  // Input for tasks
-    const taskForm = document.querySelector('#taskForm');    // Form element
-    const taskList = document.querySelector('#taskList');    // Task list container
-    const error = document.querySelector('#error');          // Error message element
+    const taskInput = document.querySelector('#taskInput');  // Tehtävän syöttökenttä
+    const taskForm = document.querySelector('#taskForm');    // Lomake-elementti
+    const taskList = document.querySelector('#taskList');    // Tehtävälista
+    const error = document.querySelector('#error');          // Virheilmoitus-elementti
 
-    // Load tasks from localStorage
+    // Lataa tehtävät localStorage:stä
     const savedTasks = JSON.parse(localStorage.getItem('tasks')) || [];
     savedTasks.forEach(task => createTaskElement(task.text, task.completed));
 
-    // Event listener for form submission
+    // Tapahtumakuuntelija lomakkeen lähettämiselle
     taskForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-        const taskText = taskInput.value.trim();
+        e.preventDefault();  // Estää lomakkeen oletustoiminnan
+        const taskText = taskInput.value.trim();  // Hae syötetyn tekstin arvot
 
         // Tarkista, onko syöte tyhjää tai liian lyhyt
         if (taskText.length === 0) {
-            alert('Syöte ei voi olla tyhjää. Anna vähintään 1 merkki.');
+            alert('Syöte ei voi olla tyhjää. Anna vähintään 4 merkkiä.');  // Ilmoitus tyhjistä syötteistä
             taskInput.classList.add('error');  // Lisää virheluokka
             return; // Lopeta toiminto
         } else if (taskText.length <= 3) {
-            alert('Syötteen on oltava yli 3 merkkiä pitkä.');
+            alert('Syötteen on oltava yli 3 merkkiä pitkä.');  // Ilmoitus liian lyhyistä syötteistä
             taskInput.classList.add('error');  // Lisää virheluokka
             return; // Lopeta toiminto
         }
@@ -27,67 +27,67 @@ document.addEventListener('DOMContentLoaded', () => {
         // Jos syöte on riittävän pitkä, luo uusi tehtävä
         createTaskElement(taskText);
         saveTask(taskText);
-        taskInput.value = '';  // Clear input field
+        taskInput.value = '';  // Tyhjennä syöttökenttä
         taskInput.classList.remove('error');  // Poista virheluokka
     });
 
-    // Create a new task element in the task list
+    // Luo uusi tehtäväelementti tehtävälistaan
     function createTaskElement(text, completed = false) {
-        const li = document.createElement('li');
-        const taskSpan = document.createElement('span');
-        taskSpan.textContent = text;
+        const li = document.createElement('li');  // Luo uusi lista-elementti
+        const taskSpan = document.createElement('span');  // Luo span-elementti tehtävän tekstille
+        taskSpan.textContent = text;  // Aseta span-elementin sisältö
 
-        // Apply 'completed' class to span and 'checked' class to li if task is completed
+        // Lisää 'completed'-luokka span-elementtiin ja 'checked'-luokka li-elementtiin, jos tehtävä on valmis
         if (completed) {
-            taskSpan.classList.add('completed');  // Apply to span
-            li.classList.add('checked');           // Apply to li for icon
+            taskSpan.classList.add('completed');  // Lisää valmis-luokka span-elementtiin
+            li.classList.add('checked');           // Lisää tarkastettu-luokka li-elementtiin
         }
 
-        // Create Complete button
+        // Luo 'Valmis'-painike
         const completeButton = document.createElement('button');
-        completeButton.textContent = 'Complete';
+        completeButton.textContent = 'Complete';  // Aseta painikkeen teksti
         completeButton.addEventListener('click', () => {
-            taskSpan.classList.toggle('completed');  // Toggle 'completed' class on the task text only
-            li.classList.toggle('checked');           // Toggle 'checked' class on the li for the icon
-            toggleTaskCompletion(text);  // Update completion status in localStorage
+            taskSpan.classList.toggle('completed');  // Vaihda 'completed'-luokan tila tehtävän tekstille
+            li.classList.toggle('checked');           // Vaihda 'checked'-luokan tila li-elementille
+            toggleTaskCompletion(text);  // Päivitä valmistumisen tila localStorage:ssä
         });
 
-        // Create Delete button
+        // Luo 'Poista'-painike
         const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Delete';
+        deleteButton.textContent = 'Delete';  // Aseta painikkeen teksti
         deleteButton.addEventListener('click', () => {
-            li.remove();  // Remove task element from the list
-            removeTask(text);  // Remove task from localStorage
+            li.remove();  // Poista tehtäväelementti listasta
+            removeTask(text);  // Poista tehtävä localStorage:stä
         });
 
-        li.appendChild(taskSpan);
-        li.appendChild(completeButton);
-        li.appendChild(deleteButton);
-        taskList.appendChild(li);
+        li.appendChild(taskSpan);  // Lisää span tehtäväelementtiin
+        li.appendChild(completeButton);  // Lisää 'Valmis'-painike tehtäväelementtiin
+        li.appendChild(deleteButton);  // Lisää 'Poista'-painike tehtäväelementtiin
+        taskList.appendChild(li);  // Lisää tehtäväelementti tehtävälistaan
     }
 
-    // Save a new task in localStorage
+    // Tallenna uusi tehtävä localStorage:hen
     function saveTask(text) {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
         tasks.push({ text, completed: false });
-        localStorage.setItem('tasks', JSON.stringify(tasks));
+        localStorage.setItem('tasks', JSON.stringify(tasks));  // Tallenna päivitykset
     }
 
-    // Remove a task from localStorage
+    // Poista tehtävä localStorage:stä
     function removeTask(text) {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        const updatedTasks = tasks.filter(task => task.text !== text);
-        localStorage.setItem('tasks', JSON.stringify(updatedTasks));
+        const updatedTasks = tasks.filter(task => task.text !== text);  // Suodata tehtävät
+        localStorage.setItem('tasks', JSON.stringify(updatedTasks));  // Tallenna päivitykset
     }
 
-    // Toggle task completion status and update localStorage
+    // Vaihda tehtävän valmistumisen tila ja päivitä localStorage
     function toggleTaskCompletion(text) {
         const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-        const task = tasks.find(task => task.text === text);
+        const task = tasks.find(task => task.text === text);  // Etsi tehtävä
 
         if (task) {
-            task.completed = !task.completed;  // Toggle completion status
-            localStorage.setItem('tasks', JSON.stringify(tasks));  // Save updates
+            task.completed = !task.completed;  // Vaihda valmistumisen tila
+            localStorage.setItem('tasks', JSON.stringify(tasks));  // Tallenna päivitykset
         }
     }
 });
