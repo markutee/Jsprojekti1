@@ -8,13 +8,13 @@ Tästä linkistä pääset github sivulle, josta valmis projekti löytyy [Github
 Tein projektin yksin.
 
 ## Table of Content
-    - [About the app](#about-the-app)
-    - [Screenshot](#screenshot)
-    - [Teknologiat](#teknologiat)
-    - [Setup](#setup)
-    - [Status](#status)
-    - [Credits](#credits)
-    - [License](#license)
+- [About the app](#about-the-app)
+- [Screenshot](#screenshot)
+- [Teknologiat](#teknologiat)
+- [Setup](#setup)
+- [Status](#status)
+- [Credits](#credits)
+- [License](#license)
 
 
 ## About the app
@@ -28,10 +28,10 @@ Tässä projektissa käytin seuraavia teknologioita: HTML, CSS sekä Javascript.
 
 ## Setup
 Miten käynnistät sovelluksen:
-    - Avaa Demo linkki kohdassa oleva linkki
-    - Lataa tiedostot omalle koneellesi
-    - Avaa ladatut tiedostot Visual Studio Code - editorissa
-    - Voi nyt avata tiedoston index.html käyttäen esimerkiksi Liveserver lisäosaa Visual Studio Coden sisällä.
+     Avaa Demo linkki kohdassa oleva linkki
+    --> Lataa tiedostot omalle koneellesi
+    --> Avaa ladatut tiedostot Visual Studio Code - editorissa
+    --> Voi nyt avata tiedoston index.html käyttäen esimerkiksi Liveserver lisäosaa Visual Studio Coden sisällä.
 
 ## Status
 Projekti 1 DOM-skriptaus on valmis.
