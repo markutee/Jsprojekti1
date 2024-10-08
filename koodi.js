@@ -13,19 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const taskText = taskInput.value.trim();
 
-        if (validateInput(taskText)) {
-            createTaskElement(taskText);
-            saveTask(taskText);
-            taskInput.value = '';  // Clear input field
-            error.classList.add('hidden');  // Hide error
-        } else {
-            showError();  // Show error if validation fails
+        // Tarkista, onko syöte tyhjää tai liian lyhyt
+        if (taskText.length === 0) {
+            alert('Syöte ei voi olla tyhjä. Anna vähintään 4 merkkiä.');
+            return; // Lopeta toiminto
+        } else if (taskText.length <= 3) {
+            alert('Syötteen on oltava yli 3 merkkiä pitkä.');
+            return; // Lopeta toiminto
         }
+
+        // Jos syöte on riittävän pitkä, luo uusi tehtävä
+        createTaskElement(taskText);
+        saveTask(taskText);
+        taskInput.value = '';  // Clear input field
+        error.classList.add('hidden');  // Hide error
     });
 
     // Function to validate task input (minimum length of 3)
     function validateInput(input) {
-        return input.length >= 3;
+        return input.length > 3; // Muutettu niin, että hyväksyy vain yli 3 merkkiä
     }
 
     // Show error message
