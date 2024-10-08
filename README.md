@@ -2,7 +2,7 @@
 To-Do Lista sovellus - Teemu Markus
 
 ## Demo linkki
-Tästä linkistä pääset github sivulle, josta valmis projekti löytyy [Github sivu](https://github.com/markutee/Jsprojekti1)
+Tästä linkist pääset sovellukseen[To-Do Lista](https://spectacular-marshmallow-a18966.netlify.app/)
 
 ## Työnjako
 Tein projektin yksin.
