@@ -38,6 +38,7 @@ Projekti 1 DOM-skriptaus on valmis.
 
 ## Credits
 [Greatstack](https://www.youtube.com/watch?v=G0jO8kUrg-I&t=960s)
+, 
 [w3school](https://www.w3schools.com/jsref/default.asp)
 
 ## License
