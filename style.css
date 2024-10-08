@@ -101,7 +101,7 @@ ul li::before {
 
 ul li.checked {
     color: #555;
-    text-decoration: line-through; /* Strikes through the task text */
+    
 }
 
 ul li.checked::before {

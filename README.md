@@ -21,7 +21,7 @@ Tein projektin yksin.
 Tekemäni To-Do Lista on sovellus, jossa voi itse lisätä listaan asioita, jotka pitää tehdä. Ne voi olla esimerkiksi koulutehtäviä tai vaikkapa kauppalista.
 
 ## Screenshot
-![Toimiva-sovellus](Demokuva.png)
+![Toimiva-sovellus](Demokuva1.png)
 
 ## Teknologiat
 Tässä projektissa käytin seuraavia teknologioita: HTML, CSS sekä Javascript.
